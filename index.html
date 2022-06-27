@@ -2,7 +2,6 @@
 <html>
   <head>
     <title>Assigment Manager - Assign Tasks</title>
-  
   </head>
   <body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -10,16 +9,16 @@
     function addtask() {
         task0 = prompt("Please enter the name of the task");
         typetask = prompt("Enter the type. Current supported values are assigment.");
-        timefortask0 = prompt("Pleas enter time of the task")
-        var div = document.getElementById('target_div');
-        div.innerHTML += typetask ;
-
-        div.innerHTML += "      " ;
-
-        div.innerHTML += task0 ;
+        timefortask0 = prompt("Please enter time of the task")
+        var div = document.getElementById('target_div'); 
+        div.innerHTML =  "<th>" + timefortask0 + "</th>";
+        var div = document.getElementById('target');
+        div.innerHTML =  "<th>" + typetask + "</th>" ;
+        var div = document.getElementById('targre');
+        div.innerHTML = "<th>" + targre + "</th>"    
       }
       </script>
-    <a href="https://www.flaticon.com/free-icon/assignment_2132217"></a><img alt="Icon" src="https://cdn-icons-png.flaticon.com/512/2132/2132217.png" width="100" 
+    <a href="https://www.flaticon.com/free-icon/assignment_2132217"><img alt="Icon" src="https://cdn-icons-png.flaticon.com/512/2132/2132217.png" width="100" 
     height="100"> </img>   </a>
     <a href="#" onclick="addtask()">Add a task</a>
     <div id="target_div">
@@ -27,12 +26,3 @@
     </div>
   </body>
 </html>
-                         
-                            
-                            
-                            
-      
-      
-                       
-                       
-   
