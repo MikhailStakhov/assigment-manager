@@ -3,6 +3,7 @@
   <head>
     <title>Assigment Manager - Assign Tasks</title>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/2132/2132217.png">
     <style>
       table, td, th {
         border: 1px solid;
@@ -13,17 +14,49 @@
         border-collapse: collapse;
       }
     </style>
+
   </head>
   <body>
-    <script>
-      function addtask() {
-        var task0 = prompt("Please enter the name of the task");
-        var typetask = prompt("Enter the type. Current supported values are assigment.");
-        var timefortask0 = prompt("Please enter time of the task");
 
-        var targetElm = document.getElementById('target_div'); 
-        targetElm.innerHTML = "<th>" + timefortask0 + "</th><th>" + typetask + "</th><th>" + task0 + "</th>";
+    <script>
+      var tasks = [];
+      
+      function addtask() {
+        var name = prompt("Please enter the name of the task");
+        var type = prompt("Enter the type. Current supported values are assigment.");
+        var time = prompt("Please enter time of the task");
+
+        tasks.push({
+          name: name,
+          type: type,
+          time: time,
+        });
+
+        console.log('tasks', tasks);
+
+        // add the task to html
+        var table = document.getElementById('tasks-table');
+        var row = table.insertRow();
+        row.innerHTML = "<td>" + time + "</td><td>" + type + "</td><td>" + name + "</td>";
       }
+
+      function checkTasks() {
+        var date = new Date();
+
+        for (var i = 0; i < tasks.length; i++) {
+          var task = tasks[i];
+          var time = task.time;
+          var [hh, mm] = time.split(':');
+          console.log(task.name, 'hh:', hh, 'mm:', mm);
+
+          if (Number(hh) === date.getHours() && Number(mm) === date.getMinutes()) {
+            alert("Hello, you need to do " + task.name + " now.");
+          }
+        }
+
+      }
+
+      setInterval(checkTasks, 30 * 1000); // time in milliseconds
 
     </script>
 
@@ -32,14 +65,12 @@
     </a><br>
     <a href="#" onclick="addtask()">Add a task</a>
     <div>
-      <table>
+      <table id="tasks-table">
         <tr>
           <th>Time</th>
           <th>Type Of Task</th>
           <th>Name</th>
-        </tr>
-        <tr id="target_div">
-        </tr>   
+        </tr>  
      </table> 
     </div>
   </body>
